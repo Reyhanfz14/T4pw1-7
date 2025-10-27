@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tombol Scroll ke Atas</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        background: #f9f9f9;
+      }
+
+      header {
+        background: #0077b6;
+        color: white;
+        text-align: center;
+        padding: 50px 0;
+        font-size: 2em;
+        font-weight: bold;
+      }
+
+      .content {
+        padding: 20px 50px;
+      }
+
+      /* Tombol Scroll to Top */
+      #scrollTopBtn {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        background-color: #0077b6;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: opacity 0.3s, transform 0.3s;
+        display: none; /* Hidden by default */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      #scrollTopBtn:hover {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <header id="top">Halaman Scroll ke Atas</header>
+
+    <div class="content">
+      <h2>Konten Panjang untuk Demonstrasi Scroll</h2>
+      <p>
+        <!-- Konten dummy untuk membuat scroll > 2000px -->
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed
+        dictum neque. Mauris venenatis ante at dolor ultrices, id sodales erat
+        aliquam. Duis quis efficitur dolor. Integer non sapien in ex ullamcorper
+        porta. Vestibulum in velit at magna iaculis gravida. Vivamus sed erat ac
+        elit convallis porttitor. Nulla facilisi.
+      </p>
+      <p>
+        <!-- Duplikasi konten agar panjang -->
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat
+        orci sit amet nisl interdum, sed tincidunt tortor faucibus. Donec
+        congue, neque vel cursus imperdiet, metus elit finibus nulla, in
+        interdum lorem tortor id urna.
+      </p>
+      <!-- Tambah banyak paragraf untuk panjang scroll -->
+      <p style="height: 2500px"></p>
+    </div>
+
+    <!-- Tombol Scroll ke Atas -->
+    <button id="scrollTopBtn" title="Kembali ke Atas">↑</button>
+
+    <script>
+      const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+      // Tampilkan tombol jika scroll > 500px
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 500 ||
+          document.documentElement.scrollTop > 500
+        ) {
+          scrollTopBtn.style.display = "block";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
+      };
+
+      // Ketika tombol diklik, scroll ke atas
+      scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
